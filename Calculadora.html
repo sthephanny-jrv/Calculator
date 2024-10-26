@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dona Kota</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-calculator' viewBox='0 0 16 16'%3E%3Cpath d='M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z'/%3E%3Cpath d='M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E"
+      type="image/svg+xml"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #deb887; /* Cor burlywood */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        color: #8b4513; /* Tom de marrom para contraste */
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #8b4513;
+      }
+
+      input,
+      select {
+        padding: 8px;
+        width: calc(100% - 10px);
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #8b4513; /* Borda marrom */
+        border-radius: 4px;
+        background-color: #fff8dc; /* Fundo burlywood claro */
+        box-sizing: border-box;
+      }
+
+      input[type="number"] {
+        width: calc(100% - 10px);
+        object-fit: cover;
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #a0522d; /* Tom de marrom mais escuro */
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #8b4513; /* Cor mais escura ao hover */
+      }
+
+      .output {
+        background-color: #fff8dc; /* Fundo burlywood claro */
+        padding: 10px;
+        border: 1px solid #8b4513;
+        border-radius: 4px;
+        margin-top: 20px;
+      }
+
+      .item-group {
+        margin-bottom: 20px;
+      }
+
+      .item-group h3 {
+        margin-bottom: 10px;
+        color: #8b4513;
+      }
+
+      .item-group button {
+        margin-top: 10px;
+        background-color: #a0522d;
+      }
+
+      .item-container {
+        margin-bottom: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .warning {
+        background-color: #ffdddd; /* Fundo vermelho claro */
+        color: #d8000c; /* Cor do texto */
+        border: 1px solid #d8000c;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculadora de Custos</h1>
+      <h2>Dona Kota</h2>
+
+      <div class="item-group">
+        <h3>Tecidos</h3>
+        <div id="tecidos"></div>
+        <button onclick="adicionarTecido()">Adicionar Tecido</button>
+      </div>
+
+      <div class="item-group">
+        <h3>Itens Extras</h3>
+        <div id="itens-extras"></div>
+        <button onclick="adicionarItemExtra()">Adicionar Item Extra</button>
+      </div>
+
+      <label for="mao-de-obra">Valor da Mão de Obra (R$):</label>
+      <input
+        type="number"
+        id="mao-de-obra"
+        placeholder="Digite o valor da mão de obra"
+      />
+
+      <label for="lucro">Porcentagem de Lucro (%):</label>
+      <input
+        type="number"
+        id="lucro"
+        placeholder="Digite a porcentagem de lucro"
+      />
+
+      <button onclick="calcularCusto()">Calcular Custo</button>
+
+      <div class="output" id="resultado"></div>
+
+      <div class="warning">
+        <strong>Atenção:</strong> Este programa é protegido por direitos
+        autorais. A distribuição, cópia ou compartilhamento não autorizados são
+        estritamente proibidos e podem resultar em sanções legais.
+      </div>
+    </div>
+
+    <script>
+      let tecidos = [];
+      let itensExtras = [];
+
+      function adicionarTecido() {
+        const index = tecidos.length;
+        const container = document.createElement("div");
+        container.innerHTML = `        
+                <h4>Tecido ${index + 1}</h4>
+                <label>Nome do Tecido:</label>
+                <input type="text" id="nome-tecido-${index}" placeholder="Digite o nome do tecido">
+
+                <label>Largura do Tecido (em metros):</label>
+                <input type="number" id="largura-tecido-${index}" placeholder="Digite a largura do tecido">
+
+                <label>Comprimento do Tecido (em metros):</label>
+                <input type="number" id="comprimento-tecido-${index}" placeholder="Digite o comprimento do tecido">
+
+                <label>Preço Pago no Tecido (R$):</label>
+                <input type="number" id="preco-tecido-${index}" placeholder="Digite o preço pago no tecido">
+
+                <label>Largura da Área Retirada (em cm):</label>
+                <input type="number" id="largura-retirada-${index}" placeholder="Digite a largura retirada">
+
+                <label>Comprimento da Área Retirada (em cm):</label>
+                <input type="number" id="comprimento-retirada-${index}" placeholder="Digite o comprimento retirado">
+            `;
+        document.getElementById("tecidos").appendChild(container);
+        tecidos.push(container);
+      }
+
+      function adicionarItemExtra() {
+        const index = itensExtras.length;
+        const container = document.createElement("div");
+        container.innerHTML = `        
+                <h4>Item Extra ${index + 1}</h4>
+                <label>Nome do Item:</label>
+                <input type="text" id="nome-item-${index}" placeholder="Digite o nome do item">
+
+                <label>Este item é comprado em Metros ou Unidades?</label>
+                <select id="metro-${index}">
+                    <option value="">Escolha a opção</option>
+                    <option value="S">Metros</option>
+                    <option value="N">Unidades</option>
+                </select>
+
+                <div id="item-extra-detalhes-${index}" style="display: none;">
+                    <!-- Detalhes adicionais aparecerão aqui com base na escolha -->
+                </div>
+            `;
+        document.getElementById("itens-extras").appendChild(container);
+        itensExtras.push(container);
+
+        document
+          .getElementById(`metro-${index}`)
+          .addEventListener("change", function () {
+            const detalhesContainer = document.getElementById(
+              `item-extra-detalhes-${index}`
+            );
+            detalhesContainer.style.display = "none"; // Esconde os detalhes inicialmente
+
+            if (this.value === "S") {
+              detalhesContainer.innerHTML = `
+                        <label>Quantidade comprada (em metros):</label>
+                        <input type="number" id="quantidade-metros-${index}" placeholder="Digite a quantidade em metros">
+
+                        <label>Valor pago no total (R$):</label>
+                        <input type="number" id="valor-total-${index}" placeholder="Digite o valor total">
+
+                        <label>Quantidade utilizada (em metros):</label>
+                        <input type="number" id="quantidade-utilizada-${index}" placeholder="Digite a quantidade utilizada">
+                    `;
+              detalhesContainer.style.display = "block"; // Mostra os detalhes
+            } else if (this.value === "N") {
+              detalhesContainer.innerHTML = `
+                        <label>Quantidade comprada (em unidades):</label>
+                        <input type="number" id="quantidade-unidades-${index}" placeholder="Digite a quantidade em unidades">
+
+                        <label>Valor pago no total (R$):</label>
+                        <input type="number" id="valor-total-unidades-${index}" placeholder="Digite o valor total">
+
+                        <label>Quantidade utilizada (em unidades):</label>
+                        <input type="number" id="quantidade-utilizada-unidades-${index}" placeholder="Digite a quantidade utilizada">
+                    `;
+              detalhesContainer.style.display = "block"; // Mostra os detalhes
+            } else {
+              detalhesContainer.innerHTML = "";
+              detalhesContainer.style.display = "none"; // Oculta se "Escolha a opção" for selecionado
+            }
+          });
+      }
+
+      function calcularCusto() {
+        let custoTecidos = 0;
+        tecidos.forEach((tecido, index) => {
+          const larguraTecido =
+            parseFloat(
+              document.getElementById(`largura-tecido-${index}`).value
+            ) || 0;
+          const comprimentoTecido =
+            parseFloat(
+              document.getElementById(`comprimento-tecido-${index}`).value
+            ) || 0;
+          const precoTecido =
+            parseFloat(
+              document.getElementById(`preco-tecido-${index}`).value
+            ) || 0;
+          const larguraRetirada =
+            parseFloat(
+              document.getElementById(`largura-retirada-${index}`).value
+            ) || 0;
+          const comprimentoRetirada =
+            parseFloat(
+              document.getElementById(`comprimento-retirada-${index}`).value
+            ) || 0;
+
+          const areaTotalTecido = larguraTecido * comprimentoTecido;
+          const areaRetirada =
+            (larguraRetirada / 100) * (comprimentoRetirada / 100);
+          const custoTecidoUtilizado =
+            (precoTecido * areaRetirada) / areaTotalTecido;
+
+          custoTecidos += custoTecidoUtilizado || 0;
+        });
+
+        let custoItensExtras = 0;
+        itensExtras.forEach((item, index) => {
+          const compradoEmMetros =
+            document.getElementById(`metro-${index}`).value === "S";
+
+          if (compradoEmMetros) {
+            const quantidadeComprada =
+              parseFloat(
+                document.getElementById(`quantidade-metros-${index}`).value
+              ) || 0;
+            const valorTotal =
+              parseFloat(
+                document.getElementById(`valor-total-${index}`).value
+              ) || 0;
+            const quantidadeUtilizada =
+              parseFloat(
+                document.getElementById(`quantidade-utilizada-${index}`).value
+              ) || 0;
+            const custoItem =
+              (valorTotal * quantidadeUtilizada) / quantidadeComprada;
+
+            custoItensExtras += custoItem || 0;
+          } else if (document.getElementById(`metro-${index}`).value === "N") {
+            const quantidadeComprada =
+              parseInt(
+                document.getElementById(`quantidade-unidades-${index}`).value
+              ) || 0;
+            const valorTotal =
+              parseFloat(
+                document.getElementById(`valor-total-unidades-${index}`).value
+              ) || 0;
+            const quantidadeUtilizada =
+              parseInt(
+                document.getElementById(
+                  `quantidade-utilizada-unidades-${index}`
+                ).value
+              ) || 0;
+            const custoItem =
+              (valorTotal * quantidadeUtilizada) / quantidadeComprada;
+
+            custoItensExtras += custoItem || 0;
+          }
+        });
+
+        const maoDeObra =
+          parseFloat(document.getElementById("mao-de-obra").value) || 0;
+        const lucro = parseFloat(document.getElementById("lucro").value) || 0;
+
+        const valorComLucro =
+          (custoTecidos + custoItensExtras) * (1 + lucro / 100) + maoDeObra;
+
+        const resultado = `
+            <p><strong>Custo Total dos Tecidos:</strong> R$ ${custoTecidos.toFixed(
+              2
+            )}</p>
+            <p><strong>Custo Total dos Itens Extras:</strong> R$ ${custoItensExtras.toFixed(
+              2
+            )}</p>
+            <p><strong>Valor com Lucro de ${lucro.toFixed(0)}%:</strong> R$ ${(
+          valorComLucro - maoDeObra
+        ).toFixed(2)}</p>
+            <p><strong>Custo da Mão de Obra:</strong> R$ ${maoDeObra.toFixed(
+              2
+            )}</p>
+            <p><strong>Valor Final para Venda:</strong> R$ ${valorComLucro.toFixed(
+              2
+            )}</p>
+        `;
+
+        document.getElementById("resultado").innerHTML = resultado;
+      }
+    </script>
+  </body>
+</html>
